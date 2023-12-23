@@ -3,5 +3,5 @@
 # LINK INSTALADOR 
 
 ~~~~
-bash <(wget -qO- bitbucket.org/nandoslayer/dtunnelinstall/downloads/install.sh)
+bash <(wget -qO-https://raw.githubusercontent.com/PhoenixxZ2023/PainelDTunnelMod/main/install.sh)
 ~~~~
