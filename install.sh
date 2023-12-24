@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-sitedwn=bitbucket.org/nandoslayer/dtunnelinstall/downloads
+sitedwn=https://github.com/PhoenixxZ2023/PainelDTunnelMod
 IP=$(wget -qO- ipv4.icanhazip.com)
 [[ $(crontab -l | grep -c "crondtunnel.sh") != '0' ]] && crontab -l | grep -v 'crondtunnel.sh' | crontab -
 function os_system {
