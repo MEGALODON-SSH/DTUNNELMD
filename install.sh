@@ -1,6 +1,6 @@
 #!/bin/bash
 clear
-sitedwn=github.com/PhoenixxZ2023/PainelDTunnelMod
+sitedwn=https://github.com/PhoenixxZ2023/PainelDTunnelMod
 IP=$(wget -qO- ipv4.icanhazip.com)
 [[ $(crontab -l | grep -c "ecosystem.config.js") != '0' ]] && crontab -l | grep -v 'ecosystem.config.js' | crontab -
 function os_system {
@@ -27,7 +27,7 @@ sudo apt-get upgrade -y
 sudo apt-get install nodejs -y > /dev/null 2>&1
 [[ ! -d /etc/paineldtunnel ]] && mkdir /etc/paineldtunnel
 cd /etc/paineldtunnel || exit
-wget $sitedwn/paineldtunnel.zip > /dev/null 2>&1
+wget -qO- https://raw.githubusercontent.com/PhoenixxZ2023/PainelDTunnelMod/main/paineldtunnel.zip > /dev/null 2>&1
 unzip -o paineldtunnel.zip > /dev/null 2>&1
 rm paineldtunnel.zip > /dev/null 2>&1
 cd || exit
