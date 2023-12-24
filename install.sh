@@ -1,8 +1,8 @@
 #!/bin/bash
 clear
-sitedwn=https://github.com/PhoenixxZ2023/PainelDTunnelMod
+sitedwn=bitbucket.org/nandoslayer/dtunnelinstall/downloads
 IP=$(wget -qO- ipv4.icanhazip.com)
-[[ $(crontab -l | grep -c "ecosystem.config.js") != '0' ]] && crontab -l | grep -v 'ecosystem.config.js' | crontab -
+[[ $(crontab -l | grep -c "crondtunnel.sh") != '0' ]] && crontab -l | grep -v 'crondtunnel.sh' | crontab -
 function os_system {
 system=$(cat -n /etc/issue | grep 1 | cut -d ' ' -f6,7,8 | sed 's/1//' | sed 's/	  //')
 distro=$(echo "$system" | awk '{print $1}')
@@ -14,9 +14,9 @@ esac
 function install_start {
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install unzip -y > /dev/null 2>&1
-sudo apt-get install npm -y > /dev/null 2>&1
-npm install pm2 -g > /dev/null 2>&1
+sudo apt-get install unzip -y
+sudo apt-get install npm -y
+npm install pm2 -g
 sudo apt-get install -y ca-certificates curl gnupg
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -24,7 +24,7 @@ NODE_MAJOR=21
 echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 sudo apt-get update -y
 sudo apt-get upgrade -y
-sudo apt-get install nodejs -y > /dev/null 2>&1
+sudo apt-get install nodejs -y
 [[ ! -d /etc/paineldtunnel ]] && mkdir /etc/paineldtunnel
 cd /etc/paineldtunnel || exit
 wget $sitedwn/paineldtunnel.zip > /dev/null 2>&1
@@ -38,17 +38,17 @@ secret3=$(node -e "console.log(require('crypto').randomBytes(256).toString('base
 sed -i "s;secret1;$secret1;g" /etc/paineldtunnel/.env > /dev/null 2>&1
 sed -i "s;secret2;$secret2;g" /etc/paineldtunnel/.env > /dev/null 2>&1
 sed -i "s;secret3;$secret3;g" /etc/paineldtunnel/.env > /dev/null 2>&1
-[[ $(crontab -l | grep -c "ecosystem.config.js") = '0' ]] && (
+[[ $(crontab -l | grep -c "crondtunnel.sh") = '0' ]] && (
 crontab -l 2>/dev/null
-echo "@reboot cd /etc/paineldtunnel || exit && pm2 start ecosystem.config.js && cd || exit"
+echo "@reboot bash /etc/paineldtunnel/crondtunnel.sh"
 ) | crontab -
-service cron restart > /dev/null 2>&1
+service cron restart
 cd /etc/paineldtunnel || exit
 npm install
 npx prisma generate
 npx prisma migrate deploy
+npm run start
 cd || exit
-cd /etc/paineldtunnel || exit && pm2 start ecosystem.config.js && cd || exit
 clear
 echo -e "\033[1;32mPAINEL INSTALADO COM SUCESSO!\033[0m"
 echo ""
