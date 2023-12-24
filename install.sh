@@ -47,6 +47,7 @@ cd /etc/paineldtunnel || exit
 npm install
 npx prisma generate
 npx prisma migrate deploy
+npm run start
 bash /etc/paineldtunnel/crondtunnel.sh
 cd || exit
 clear
