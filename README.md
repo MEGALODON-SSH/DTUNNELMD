@@ -1,6 +1,6 @@
 # PainelDTunnelMod
 
 ~~~~
-bash <(wget -qO- https://raw.githubusercontent.com/PhoenixxZ2023/PainelDTunnelMod/main/install.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/MEGALODON-SSH/PainelDTunnelMod/main/install.sh)
 ~~~~
 
