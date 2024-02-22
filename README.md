@@ -1,6 +1,6 @@
-# PainelDTunnelMod
+# DTUNNELMD
 
 ~~~~
-bash <(wget -qO- https://raw.githubusercontent.com/MEGALODON-SSH/PainelDTunnelMod/main/install.sh)
+bash <(wget -qO- https://raw.githubusercontent.com/MEGALODON-SSH/DTUNNELMD/main/install.sh)
 ~~~~
 
